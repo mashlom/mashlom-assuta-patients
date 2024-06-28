@@ -1,0 +1,217 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.welcome-container {
+  display: flex;
+  max-width: 1230px;
+  margin: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.best-regards-container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  max-width: 1230px;
+  margin: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.rounded-box {
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.title {
+  background-color: #24326A;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 11px;
+  line-height: 0px;
+}
+
+.text {
+  background-color: #DBECD0;
+  color: #24326A;
+}
+
+
+.welcome-content {
+  background: url("../../../images/BG_assuta_main.jpg") no-repeat scroll 0 0 transparent;
+}
+
+.welcome-content .welcome-left {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-content {
+  .welcome-right {
+    position: relative;
+    width: 456px;
+  }
+}
+
+.bg-gray {
+  background-color: #f3f3f3;
+}
+
+.welcome-content .welcome-left p {
+  font-size: 22px;
+  line-height: 28px;
+  margin-bottom: 20px;
+}
+
+.video-content {
+  padding: 50px 0;
+  text-align: center;
+  position: relative;
+}
+
+.video-content iframe {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 10px solid #000;
+  position: relative;
+  z-index: 1;
+}
+
+h2.video-title {
+  margin: 0 0 30px;
+  font-size: 42px;
+  text-transform: capitalize;
+  color: var(--green);
+  position: relative;
+  z-index: 1;
+}
+
+#video-1:before,
+#video-2:after {
+  content: "";
+  position: absolute;
+}
+
+#video-1:before {
+  background: url("../../../images/figure4.png") no-repeat scroll 0 0 transparent;
+  height: 370px;
+  width: 382px;
+  left: 20px;
+  top: 20px;
+}
+
+#video-2:after {
+  background: url("../../../images/figure5.png") no-repeat scroll 0 0 transparent;
+  height: 370px;
+  width: 382px;
+  left: auto;
+  right: 0px;
+  top: auto;
+  bottom: 0;
+}
+
+#video-3 {
+  background: url("../../../images/cover.jpg") no-repeat scroll 0 0 transparent;
+}
+
+select#language-select {
+  border: 1px solid #b5b5b5;
+  background: #fff;
+  font-size: 16px;
+  padding: 6px 20px 6px 5px;
+}
+
+// @media (max-width: 1199px) {
+@include respond-to(xl) {
+  .welcome-content .welcome-left {
+    padding: 30px;
+  }
+
+  #video-1:before {
+    background-size: 180px 200px;
+  }
+}
+
+// @media (max-width: 1023px) {
+@include respond-to(lgp) {
+  .video-content iframe {
+    max-width: 710px;
+    max-height: 390px;
+  }
+
+  h2.video-title {
+    font-size: 32px;
+  }
+
+  .welcome-content .welcome-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .welcome-content .welcome-container .welcome-right {
+    order: 1;
+    text-align: center;
+    width: 347px;
+  }
+
+  .welcome-content .welcome-container>div {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .welcome-content .welcome-left {
+    padding: 15px 30px;
+  }
+}
+
+// @media (max-width: 767px) {
+@include respond-to(md) {
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .welcome-content .welcome-left {
+    padding: 15px 0px;
+  }
+
+  .welcome-content .welcome-container .welcome-right img {
+    width: 295px;
+  }
+
+  .welcome-content .welcome-left p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 15px;
+  }
+
+  h2.video-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .video-content iframe {
+    max-width: 455px;
+    max-height: 280px;
+  }
+
+  #video-1:before,
+  #video-2:after {
+    display: none;
+  }
+}
+
+// @media (max-width: 479px) {
+@include respond-to(xs) {
+  .video-content iframe {
+    max-width: 290px;
+    max-height: 180px;
+  }
+
+  select#language-select {
+    font-size: 14px;
+    padding: 4px 10px 4px 5px;
+  }
+}

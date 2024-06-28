@@ -1,0 +1,54 @@
+{
+  "name": "mashlom-assuta-patients",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Mashlom Assuta-Patients gatsby site",
+  "main": "index.js",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "predeploy": "gatsby build --prefix-paths",
+    "deploy": "gh-pages -d public -b gh-pages"
+  },
+  "keywords": [
+    "mashlom",
+    "health",
+    "gatsby",
+    "react"
+  ],
+  "author": "Ariel Benesh",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mashlom/mashlom-assuta-patients.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mashlom/mashlom-assuta-patients/issues"
+  },
+  "homepage": "https://github.com/mashlom/mashlom-assuta-patients#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "classnames": "^2.5.1",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "gatsby": "^5.13.6",
+    "gatsby-plugin-google-gtag": "^5.13.1",
+    "gatsby-plugin-postcss": "^6.13.1",
+    "gatsby-plugin-sass": "^6.13.1",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gh-pages": "^6.1.1",
+    "lodash": "^4.17.21",
+    "normalize.css": "^8.0.1",
+    "postcss": "^8.4.38",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-intl": "^6.6.8",
+    "sass": "^1.77.6"
+  },
+  "overrides": {
+    "webpack-dev-middleware": "^5.3.4"
+  }
+}
