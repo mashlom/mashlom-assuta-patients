@@ -41,9 +41,9 @@
 
 4.  **Deploy to Github pages**
 
-    In order to deploy to github pages you need to setup your remote repo with the gh-page branch and set the remote origin to your local project
+    In order to deploy to github pages you need to setup the remote origin to your local project and set the remote project build and deployment source to github actions
 
-    after that mergeing or deploying to master will run a github action that will auto deploy the site. (make sure your main branch is allowed to deploy to the github-pages branch in the Deployment protection rules)
+    after that mergeing or deploying to master/main will run a github action that will auto deploy the site. (make sure your main branch is allowed to deploy to the github-pages branch in the Deployment protection rules)
 
     see more information here: [Deploying gatsby to github pages](https://dev.to/arnonate/deploying-gatsby-to-github-pages-3af5)
 
