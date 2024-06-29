@@ -7,8 +7,10 @@
 
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import favIcon from '../images/assuta/favicon-32x32.png';
+import appleTouchIcon from '../images/assuta/apple-touch-icon.png';
 
-function Seo ({ title, description, children, location, pageKeywords }) {
+export default function Seo ({ title, description, children, location, pageKeywords }) {
   const siteUrl = 'https://assuta-ashdod.mashlom.me';
   const pageUrl = `${siteUrl}${location?.pathname}`;
   
@@ -42,13 +44,13 @@ function Seo ({ title, description, children, location, pageKeywords }) {
       <link
         rel="apple-touch-icon"
         sizes="180x180"
-        href="../images/assuta/apple-touch-icon.png"
+        href={appleTouchIcon}
       />
       <link
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="../images/assuta/favicon-32x32.png"
+        href={favIcon}
       />
       <meta
         property="og:image"
@@ -79,5 +81,3 @@ function Seo ({ title, description, children, location, pageKeywords }) {
     </>
   );
 }
-
-export default Seo;
