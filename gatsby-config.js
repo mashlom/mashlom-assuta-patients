@@ -1,6 +1,9 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+
+const { GA_ID } = process.env
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -22,11 +25,11 @@ module.exports = {
         ],
       },
     },
-    {
+    GA_ID && {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-          process.env.GA_ID,
+          GA_ID,
         ],
         pluginConfig: {
           head: true,

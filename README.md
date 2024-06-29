@@ -43,6 +43,41 @@
 
     In order to deploy to github pages you need to setup your remote repo with the gh-page branch and set the remote origin to your local project
 
-    after that mergeing or deploying to master will run a github action that will auto deploy the site.
+    after that mergeing or deploying to master will run a github action that will auto deploy the site. (make sure your main branch is allowed to deploy to the github-pages branch in the Deployment protection rules)
 
     see more information here: [Deploying gatsby to github pages](https://dev.to/arnonate/deploying-gatsby-to-github-pages-3af5)
+
+
+### Using Environment Variables in GitHub Actions
+
+To use environment variables in your GitHub Actions workflow, follow these steps:
+
+1. **Add Secrets to GitHub**:
+   - Go to your GitHub repository.
+   - Click on the "Settings" tab.
+   - Select "Secrets and variables" under "Security" and then "Actions".
+   - Click "New repository secret".
+   - Add your secret (e.g., `GA_ID`) and click "Add secret".
+
+2. **Configure Your Workflow**:
+   - In your `.github/workflows` directory, ensure that your workflow file specifies the environment for jobs that need the secrets.
+   - Use `${{ secrets.GA_ID }}` in your workflow to access the secret.
+
+   Example:
+   ```yaml
+   jobs:
+     build:
+       runs-on: ubuntu-latest
+       environment: production
+       steps:
+         - name: Checkout
+           uses: actions/checkout@v4
+         - name: Build
+           env:
+             GA_ID: ${{ secrets.GA_ID }}
+           run: npm run build
+
+3. **Usage in Gatsby**:
+  - In your Gatsby configuration, use process.env.GA_ID to access the environment variable.
+
+By following these steps, you ensure that sensitive information is securely managed and available during the build process.
