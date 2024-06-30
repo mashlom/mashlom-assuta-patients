@@ -84,10 +84,10 @@ const links = [
         text: 'הדרכה התפתחותית לקראת שחרור מהפגייה (במועד)',
         url: 'developmental-guidance-pre-release-due',
       },
-      // {
-      //   text: 'הדרכת הורים לתינוקות בני 3-6 חודשים מתוקן (מרפאת פגים)',
-      //   url: 'parent-guidance-clinic-3-6',
-      // },
+      {
+        text: 'הדרכת הורים לתינוקות בני 3-6 חודשים מתוקן (מרפאת פגים)',
+        url: 'parent-guidance-clinic-3-6',
+      },
     ],
   },
 ];

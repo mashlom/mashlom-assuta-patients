@@ -47,6 +47,10 @@
 
     see more information here: [Deploying gatsby to github pages](https://dev.to/arnonate/deploying-gatsby-to-github-pages-3af5)
 
+### Troubleshoot
+
+    If you create a new page, you may see an error message in the log. The web page shows that the link cannot be found.
+    Try to restart the `npm run develop` process. If it doesn't work, run `npm run clean` and restart the process.
 
 ### Using Environment Variables in GitHub Actions
 
