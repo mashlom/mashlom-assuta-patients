@@ -36,7 +36,7 @@ export default function TracheostomyCare() {
           <p>
           הקנולה היא צינורית קצרה הממוקמת בצוואר ומוחדרת לקנה הנשימה. היא מוחזקת במקומה בעזרת קיבוע או שרוך הכרוך מסביב לצוואר, היא עשויה חומר גמיש למחצה ויכולה לכלול בלונית המקיפה אותה. היא מאפשרת נתיב אוויר פתוח, שאיבת הפרשות מדרכי הנשימה והנשמה מלאכותית. חברות רבות מייצרות קנולות. לרוב כתובים על הקנולה שם היצרן, גודל, קוטר פנימי וחיצוני, ואורך.
           </p>
-          <div class="reviewer-note">הושמטו כאן בולטים שלא נראים קשורים</div>
+          <div className="reviewer-note">הושמטו כאן בולטים שלא נראים קשורים</div>
           <p className="paragraph-title">קנולה עם צינורית פנימית וחיצונית:
           </p>
           <p>
@@ -74,7 +74,7 @@ export default function TracheostomyCare() {
           </p>
           <p className="paragraph-title">שלבי החלפת הקיבוע:</p>
           <p>
-            <ul class="numbered-list">
+            <ul className="numbered-list">
                 <li>הכינו את הקיבוע (את הקצוות ניתן לחתוך בזווית, לטובת השחלה קלה).
                 </li>
                 <li>הכינו את הציוד להחלפת הקיבוע בהישג יד.
@@ -115,7 +115,7 @@ export default function TracheostomyCare() {
           <p className="paragraph-title">הציוד הנדרש לביצוע סקשן:
           </p>
           <p>
-            <ul class="numbered-list">
+            <ul className="numbered-list">
                 <li>כפפה סטרילית
                 </li>
                 <li>סליין 9.0% NaCl (תמיסת מי מלח) במזרק 5-2.5 cc
@@ -176,7 +176,7 @@ export default function TracheostomyCare() {
                 </li>
                 <li>הפסיקו לשאוב כאשר תראו שאין יותר הפרשות הנשאבות לקתטר (צנתר) או כשלא תשמעו יותר את הבעבוע שלהן.
                 </li>
-                <div class="reviewer-note">שקף 11 - מוזר מאוד, לא מתקשר למה שהיה קודם. המספור ממשיך את מה שהיה, הכותרת התחלפה. הורדתי את זה</div>
+                <div className="reviewer-note">שקף 11 - מוזר מאוד, לא מתקשר למה שהיה קודם. המספור ממשיך את מה שהיה, הכותרת התחלפה. הורדתי את זה</div>
             </ul>
          </p>
          <p className="paragraph-title">דגשים:            
@@ -200,7 +200,7 @@ export default function TracheostomyCare() {
           </p>
           <p className="paragraph-title">כך תשתמשו:</p>
           <p>
-            <ul class="numbered-list">
+            <ul className="numbered-list">
               <li>חברו את האמבו לצינורית חמצן ופתחו את ברז החמצן
               </li>
               <li>חברו את האמבו ישירות לקנולה או לצינור מאריך ("אקורדיון")
@@ -239,7 +239,7 @@ export default function TracheostomyCare() {
           <p className="paragraph-title">הציוד הנדרש החלפת קנולה:
           </p>
           <p>
-            <ul class="numbered-list">
+            <ul className="numbered-list">
               <li>חמצן</li>
               <li>אמבו מחובר לחמצן + "אקורדיון"
               </li>
@@ -259,7 +259,7 @@ export default function TracheostomyCare() {
           </p>
           <p>
           כאשר הקנולה חסומה או נשלפת, רצוי להיעזר באדם נוסף בהחלפתה.
-            <ul class="numbered-list">
+            <ul className="numbered-list">
               <li>רחצו ידיים היטב
               </li>
               <li>הסבירו לילד על התהליך העומד להתבצע
@@ -301,7 +301,7 @@ export default function TracheostomyCare() {
           </p>
           <p>
           אם אינכם מצליחים להחדיר את הקנולה למקומה, בצעו את השלבים הבאים:
-            <ul class="numbered-list">
+            <ul className="numbered-list">
               <li>נסו להחדיר קנולה שקטנה בחצי מידה מהקנולה הישנה (ודאו כי הבלונית מרוקנת).
               </li>
               <li>אם לא הצלחתם, צלצלו ל-101 (מד"א).
@@ -412,7 +412,7 @@ export default function TracheostomyCare() {
           </p>
           <p>
           התנהגויות שעלולות להצביע על קושי באכילה או בבליעה:
-            <ul class="numbered-list">
+            <ul className="numbered-list">
               <li>רתיעה מהבקבוק, מהכפית או סירוב לאכול, לשתות או לינוק.
               </li>
               <li>בכי והקשתה של הגב בזמן הארוחות.
@@ -447,7 +447,7 @@ export default function TracheostomyCare() {
           </p>
           <p className="paragraph-title">זכרו:</p>
           <p>
-            <ul class="numbered-list">
+            <ul className="numbered-list">
               <li><b>העלו שאלות</b> לגבי נושאים שלא מובנים לכם ובטאו חששות והיסוסים בפני הצוות הרפואי כדי שיוכל לספק לכם מענה הולם.
               </li>
               <li><b>בחרו שותף שיוכל לעזור לכם</b> בטיפול בילדכם כדי להוריד מתחושת העומס והאחריות (כל אדם שיטפל בו חייב לקבל הדרכה). הורה אחד לא יכול לתת טיפול 24 שעות ביממה.

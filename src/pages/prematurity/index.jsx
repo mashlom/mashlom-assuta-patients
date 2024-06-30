@@ -68,10 +68,10 @@ const links = [
         url: 'tracheostomy-care',
       },
       { text: 'טעימות ראשונות', url: 'first-tastes' },
-      // {
-      //   text: 'הדרכת הורים לתינוקות בני חודש עד 3 חודשים מתוקן (מרפאת פגים)',
-      //   url: 'parent-guidance-clinic-1-3',
-      // },
+      {
+        text: 'הדרכת הורים לתינוקות בני חודש עד 3 חודשים',
+        url: 'parent-guidance-clinic-1-3',
+      },
       {
         text: 'בדרך הביתה – הדרכה לתינוקות המשתחררים מהפגייה',
         url: 'on-the-way-home',
