@@ -49,8 +49,8 @@
 
 ### Troubleshoot
 
-    If you create a new page, you may see an error message in the log. The web page shows that the link cannot be found.
-    Try to restart the `npm run develop` process. If it doesn't work, run `npm run clean` and restart the process.
+If you create a new page, you may see an error message in the log. The web page shows that the link cannot be found.
+Try to restart the `npm run develop` process. If it doesn't work, run `npm run clean` and restart the process.
 
 ### Using Environment Variables in GitHub Actions
 
