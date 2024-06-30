@@ -37,5 +37,5 @@ module.exports = {
         },
       },
     },
-  ],
+  ].filter(Boolean), // Filter out falsy values
 }
