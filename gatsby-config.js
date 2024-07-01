@@ -8,12 +8,12 @@ const { GA_ID } = process.env
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  pathPrefix: `/mashlom-assuta-patients`,
+  pathPrefix: `/`,
   siteMetadata: {
     title: `חווית מטופל - אסותא אשדוד`,
     description: `חווית מטופל - אסותא אשדוד`,
     author: `@relbns`,
-    siteUrl: `https://mashlom.github.io/mashlom-assuta-patients/`,
+    siteUrl: `https://mashlom.github.io/`,
   },
   plugins: [
     `gatsby-plugin-sass`,
