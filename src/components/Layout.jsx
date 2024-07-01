@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Cover from './Cover';
 import useBodyDirection from '../hooks/useBodyDirection';
 import './Layout.scss';
+import { useEffect } from 'react';
 
 const Layout = ({
   children,
@@ -11,6 +12,14 @@ const Layout = ({
   coverTitle,
   isShowLangSwitcher,
 }) => {
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "/nagishli.js?v=2.3";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
   useBodyDirection();
   return (
     <div>
