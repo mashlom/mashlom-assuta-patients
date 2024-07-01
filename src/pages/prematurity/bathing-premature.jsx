@@ -130,5 +130,5 @@ export default function BathingPremature() {
 }
 
 export const Head = () => (
-  <Seo title="הדרכת הורים -  רחצת התינוק - פגיה - אסותא אשדוד" />
+  <Seo title="הדרכת הורים -  רחצת התינוק - פגייה - אסותא אשדוד" />
 );

@@ -6,7 +6,7 @@ import './prematurity.scss';
 
 export default function G6PDDeficiency () {
   return (
-    <Layout coverTitle="הדרכת הורים -  חוסר באנזים G6PD - פגיה - אסותא אשדוד">
+    <Layout coverTitle="הדרכת הורים -  חוסר באנזים G6PD - פגייה - אסותא אשדוד">
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">חוסר באנזים G6PD</div>
@@ -88,5 +88,5 @@ export default function G6PDDeficiency () {
 }
 
 export const Head = () => (
-  <Seo title="הדרכת הורים -  חוסר באנזים G6PD - פגיה - אסותא אשדוד" />
+  <Seo title="הדרכת הורים -  חוסר באנזים G6PD - פגייה - אסותא אשדוד" />
 );

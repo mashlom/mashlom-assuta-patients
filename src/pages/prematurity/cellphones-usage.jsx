@@ -6,7 +6,7 @@ import './prematurity.scss';
 
 export default function CellphonesUsage() {
   return (
-    <Layout coverTitle="הנחיות לשימוש בטלפונים סלולריים בפגייה - אסותא אשדוד">
+    <Layout coverTitle="">
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">
@@ -37,7 +37,7 @@ export default function CellphonesUsage() {
             <li>השימוש בטלפונים סלולריים אסור בעת החזקה וטיפול במטופל.</li>
             <li>
               ניתן להשמיע מוזיקה באינקובטור או בעריסה בחיבור חוטי בין הטלפון
-              לרמקול על פני שימוש בבלוטוס (bluetooth).
+              לרמקול. נא להמנע משימוש בבלוטוס (bluetooth).
             </li>
           </ul>
           <p className="paragraph-title">

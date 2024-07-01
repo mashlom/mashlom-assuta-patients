@@ -6,10 +6,10 @@ import './prematurity.scss';
 
 export default function BreastMilkPumpingPremature() {
   return (
-    <Layout coverTitle="דף הדרכה לשאיבת חלב ליולדת בפגיה">
+    <Layout coverTitle="דף הדרכה לשאיבת חלב ליולדת בפגייה">
       <div className="page-container">
         <div className="main-content">
-          <div className="sub-title">דף הדרכה לשאיבת חלב ליולדת בפגיה</div>
+          <div className="sub-title">דף הדרכה לשאיבת חלב ליולדת בפגייה</div>
           <p>יולדת יקרה,</p>
           <p>
             חלב אם הוא המזון הטוב ביותר עבור תינוקך. במידה ותינוקך עדיין אינו
@@ -26,7 +26,7 @@ export default function BreastMilkPumpingPremature() {
               את יצור החלב שלך.
             </li>
             <li>
-              לפני שאיבת החלב האחות בפגיה תחלק לך צינורית עם ממברנה עגולה. תשמרי
+              לפני שאיבת החלב האחות בפגייה תחלק לך צינורית עם ממברנה עגולה. תשמרי
               אותה בתוך שקית יעודית ל-30 ימים. לשאיבת חלב תקבלי ערכה רב פעמית.
             </li>
             <li>
@@ -106,4 +106,4 @@ export default function BreastMilkPumpingPremature() {
   );
 }
 
-export const Head = () => <Seo title="דף הדרכה לשאיבת חלב ליולדת בפגיה" />;
+export const Head = () => <Seo title="דף הדרכה לשאיבת חלב ליולדת בפגייה" />;

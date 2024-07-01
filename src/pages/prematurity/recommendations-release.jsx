@@ -176,5 +176,5 @@ export default function RecommendationsRelease() {
 }
 
 export const Head = () => (
-  <Seo title="הדרכת הורים -  התפתחות וגדילה - פגיה - אסותא אשדוד" />
+  <Seo title="הדרכת הורים -  התפתחות וגדילה - פגייה - אסותא אשדוד" />
 );

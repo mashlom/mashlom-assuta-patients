@@ -6,7 +6,7 @@ import './prematurity.scss';
 
 export default function FeedingBottleWeek34() {
   return (
-    <Layout coverTitle="האכלת פג מבקבוק - פגיה - אסותא אשדוד">
+    <Layout coverTitle="האכלת פג מבקבוק - פגייה - אסותא אשדוד">
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">האכלת פג מבקבוק (החל משבוע 34)</div>
@@ -154,4 +154,4 @@ export default function FeedingBottleWeek34() {
   );
 }
 
-export const Head = () => <Seo title="האכלת פג מבקבוק - פגיה - אסותא אשדוד" />;
+export const Head = () => <Seo title="האכלת פג מבקבוק - פגייה - אסותא אשדוד" />;

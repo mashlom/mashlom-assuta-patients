@@ -25,7 +25,7 @@ const links = [
       { text: 'דף מידע להורים - חוסר באנזים G6PD', url: 'G6PD-deficiency' },
       { text: 'דף הסבר להורים - חיסון נגיף RSV', url: 'rsv-vaccine' },
       {
-        text: 'דף הסבר להורים - בדיקות עיניים בפגיה',
+        text: 'דף הסבר להורים - בדיקות עיניים בפגייה',
         url: 'eye-tests',
       },
       { text: 'דף מדע למשפחות – בידוד מגע', url: 'contact-isolation' },
@@ -45,7 +45,7 @@ const links = [
     title: 'הנקה, בנק חלב אם ושאיבת חלב אם בפגייה',
     pages: [
       {
-        text: 'דף הדרכה לשאיבת חלב אם ליולדת בפגיה',
+        text: 'דף הדרכה לשאיבת חלב אם ליולדת בפגייה',
         url: 'breast-milk-pumping-premature',
       },
       { text: 'דף הנחיות לשאיבת חלב אם', url: 'breast-milk-pumping' },

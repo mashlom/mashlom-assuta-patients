@@ -83,5 +83,5 @@ export default function TubeBottleFeedingReadiness() {
 }
 
 export const Head = () => (
-  <Seo title="מוכנות לאכילה -  דף הדרכה להורה בזמן הזנה מזונדה - פגיה - אסותא אשדוד" />
+  <Seo title="מוכנות לאכילה -  דף הדרכה להורה בזמן הזנה מזונדה - פגייה - אסותא אשדוד" />
 );

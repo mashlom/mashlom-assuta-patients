@@ -78,7 +78,7 @@ export default function BreastMilkBank() {
 
           <p>בכל שאלה ניתן לפנות אל הצוות המטפל.</p>
 
-          <p>בברכת בריאות, צוות הפגיה.</p>
+          <p>בברכת בריאות, צוות הפגייה.</p>
 
           <div className="back-to-home-container">
             <Link to="/prematurity" className="back-to-home-button">

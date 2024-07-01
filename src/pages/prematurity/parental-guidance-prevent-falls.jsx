@@ -6,7 +6,7 @@ import './prematurity.scss';
 
 export default function ParentalGuidancePreventFalls() {
   return (
-    <Layout coverTitle="הדרכת הורים - מניעת נפילות - אסותא אשדוד">
+    <Layout coverTitle="הדרכת הורים">
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title"> מניעת נפילות</div>

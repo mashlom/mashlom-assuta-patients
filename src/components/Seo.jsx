@@ -29,8 +29,6 @@ export default function Seo ({ title, description, children, location, pageKeywo
   );
 
   const metaDescription = description || site?.siteMetadata?.description;
-  const defaultTitle = site?.siteMetadata?.title;
-  
   const defaultKeywords = "assuta ashdod, רפואת ילדים, אסותא אשדוד"
   const keywords = pageKeywords || defaultKeywords;
 
@@ -69,7 +67,7 @@ export default function Seo ({ title, description, children, location, pageKeywo
       />
       <meta name="keywords" content={keywords} />
       <meta name="robots" content="index, follow, NOODP" />
-      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
+      <title>{title}</title>
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
