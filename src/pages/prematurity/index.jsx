@@ -32,7 +32,7 @@ const links = [
       {
         text: 'דף הדרכה – האכלת פג מבקבוק החל משבוע 34',
         url: 'feeding-bottle-week34',
-      },
+      },      
       { text: 'דף הדרכה - התפתחות וגדילה', url: 'growth-development' },
       { text: 'הנחיות לרחצת פג', url: 'bathing-premature' },
       {
@@ -48,7 +48,7 @@ const links = [
         text: 'דף הדרכה לשאיבת חלב אם ליולדת בפגייה',
         url: 'breast-milk-pumping-premature',
       },
-      { text: 'דף הנחיות לשאיבת חלב אם', url: 'breast-milk-pumping' },
+      { text: 'שאיבת חלב אם', url: 'breast-milk-pumping' },
       { text: 'דף מידע להורים - חלב אם מבנק חלב אם', url: 'breast-milk-bank' },
       { text: 'סחיטת קולוסטרום', url: 'colostrum-extraction' },
       { text: 'דף מידע - הנקה', url: 'breastfeeding-science' },

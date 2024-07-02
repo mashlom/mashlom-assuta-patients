@@ -11,6 +11,11 @@ export default function GrowthDevelopment() {
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title"> התפתחות וגדילה</div>
+          <div className="reviewer-note">כל הדף הזה דומה מדי ל"הכרת עולם הפג". לדעתי צריך להוריד את הדף הזה או את הכרת עולם הפג, אין טעם להשאיר את שניהם.
+            (להתייחס גם לאיזה קטגוריה לשים בדף האינדקס) <br />
+            <a href='/prematurity/premature-world'>לינק הכרת עולם הפג</a><br />
+            מעבר לזה, לא עשיתי הגהה על הדף
+          </div>
           <p>הורים יקרים,</p>
           <p>
             יחד עם תחילתה של ההורות בפגייה, אתם ההורים נחשפים לעולם חדש לשפה
@@ -19,7 +24,7 @@ export default function GrowthDevelopment() {
             זו.
           </p>
           <p>
-            <span style={{ color: 'var(--green)' }}>בפגייה שלנו</span>
+            <span style={{ color: 'var(--green)' }}>בפגייה שלנו </span>
             מיישמים עקרונות של גישת "טיפול תומך התפתחות בפג" (Developmental
             Care). על פי גישה זו יש חשיבות רבה להבנת שפת גופו של הפג, שכן בעזרתה
             ניתן להבין את שפת גופו של תינוקכם, להביאו לרגיעה ולשינה וליצירת
