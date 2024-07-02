@@ -57,7 +57,7 @@ const links = [
   {
     title: 'דפי הדרכה לקראת שחרור',
     pages: [
-      { text: 'הדרכת החייאת וחנק', url: 'resuscitation-and-choking' },
+      { text: 'הדרכת החייאה וחנק', url: 'resuscitation-and-choking' },
       // { text: 'המלצות שחרור', url: 'recommendations-release' },
       {
         text: 'הדרכת תזונתית לקראת שחרור מהפגייה',
