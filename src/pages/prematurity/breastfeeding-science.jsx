@@ -10,6 +10,7 @@ export default function BreastfeedingScience() {
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">הנקה</div>
+          <div className="reviewer-note">דף משוכפל כמעט לחלוטין. אני בעד להוריד את כל הדף. במידה ומשאירים - צריך לעבור הגהה</div>
           <p>הורים יקרים,</p>
           <p>
             חלב אם הינו מזון-העל. חלב אם מספק לתינוק מזון חשוב והגנה חשובה. יש

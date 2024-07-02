@@ -230,13 +230,11 @@ li::marker {
 
 .image-container {
     display: flex;
-    justify-content: center;
-    margin: 20px 0;
+    justify-content: center;    
 }
 
 .image-container img {
-    max-width: 100px;
-    margin: 0 40px;
+    max-width: 100%;    
 }
 
 .reviewer-note {
@@ -255,4 +253,11 @@ li::marker {
     text-align:center;
     font-weight: bold;
     border-radius: 10px;
+}
+
+.inner-link {
+    text-decoration: underline;
+}
+.inner-link:hover {
+    text-decoration: underline;
 }

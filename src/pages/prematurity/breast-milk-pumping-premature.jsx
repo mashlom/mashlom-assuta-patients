@@ -6,7 +6,7 @@ import './prematurity.scss';
 
 export default function BreastMilkPumpingPremature() {
   return (
-    <Layout coverTitle="דף הדרכה">
+    <Layout coverTitle="חלב אם">
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">שאיבת חלב ליולדת בפגייה</div>
