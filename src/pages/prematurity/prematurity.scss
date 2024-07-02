@@ -1,3 +1,12 @@
+:root {
+    --white: #ffffff;
+    --black: var(--black);
+    --blue: #0e2f74;
+    --blue1: #0f2d6c;
+    --green: #72a00e;
+    --light-green: #DBECD0;
+  }  
+
 .index-category-title{
     font-size: 30px;
     color: var(--green);
@@ -233,6 +242,11 @@ li::marker {
 .reviewer-note {
     background-color: black;
     color: white;
+}
+
+.all-page-image {
+    width: 100%;
+    max-width: 50rem;
 }
 
 .inline-baloon {

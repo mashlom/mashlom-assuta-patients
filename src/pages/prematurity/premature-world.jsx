@@ -133,7 +133,7 @@ export default function PrematureWorld() {
             בטבלה שלהלן תוכלו ללמוד חלק מהסימנים העיקריים המשקפים את הלך רוחו של
             הפג:
           </p>
-          <Image src="premature-world-states.png" />
+          <Image src="premature-world-states.png" className="all-page-image" />
           <div className="back-to-home-container">
             <Link to="/prematurity" className="back-to-home-button">
               חזרה לדף הבית

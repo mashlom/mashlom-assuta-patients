@@ -6,7 +6,7 @@ import './prematurity.scss';
 
 export default function ContactIsolation() {
   return (
-    <Layout coverTitle="בידוד מגע – חיידקים יציבים לאנטיביוטיקה - אסותא אשדוד">
+    <Layout coverTitle="">
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">
@@ -87,9 +87,6 @@ export default function ContactIsolation() {
 
           <p>בכל שאלה ניתן לפנות אל הצוות המטפל.</p>
           <p>בברכת בריאות איתנה.</p>
-          <p>
-            <b>*טופס זה מנוסח בלשון זכר אך מיועד לנשים ולגברים כאחד</b>
-          </p>
           <div className="back-to-home-container">
             <Link to="/prematurity" className="back-to-home-button">
               חזרה לדף הבית

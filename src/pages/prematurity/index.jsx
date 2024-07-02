@@ -8,15 +8,15 @@ const links = [
   {
     title: 'דפי הדרכה בקבלה',
     pages: [
+      { text: 'הכרת עולם הפג', url: 'premature-world' },
       {
-        text: 'הדרכת הורים למניעת נפילות',
+        text: 'מניעת נפילות',
         url: 'parental-guidance-prevent-falls',
       },
       {
         text: 'הנחיות לשימוש בטלפונים סלולריים בפגייה',
         url: 'cellphones-usage',
-      },
-      { text: 'הכרת עולם הפג', url: 'premature-world' },
+      },      
     ],
   },
   {
@@ -28,9 +28,9 @@ const links = [
         text: 'דף הסבר להורים - בדיקות עיניים בפגייה',
         url: 'eye-tests',
       },
-      { text: 'דף מדע למשפחות – בידוד מגע', url: 'contact-isolation' },
+      { text: 'דף הדרכה – בידוד מגע', url: 'contact-isolation' },
       {
-        text: 'דף הדרכה – אכלת פג מבקבוק החל משבוע 34',
+        text: 'דף הדרכה – האכלת פג מבקבוק החל משבוע 34',
         url: 'feeding-bottle-week34',
       },
       { text: 'דף הדרכה - התפתחות וגדילה', url: 'growth-development' },
