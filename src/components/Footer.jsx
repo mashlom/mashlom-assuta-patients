@@ -45,7 +45,7 @@ const Footer = () => (
             <a
               className="fmenu-big-link"
               aria-label="accessibility"
-              href="https://www.assutaashdod.co.il/en/?catid=%7B0CFCB0BD-DF84-412A-AEA5-ED6C957733F4%7D"
+              href="https://www.assutaashdod.co.il/?catid=%7B0CFCB0BD-DF84-412A-AEA5-ED6C957733F4%7D"              
               target="_self"
             >
               <FormattedMessage id="footer_accessibility" />
