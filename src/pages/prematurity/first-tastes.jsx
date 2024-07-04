@@ -10,15 +10,17 @@ export default function FirstTaste() {
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">
-            הדרכה לקראת המעבר למוצקים להורים לתינוקות בני 6 חודשים מתוקן
+      מעבר למוצקים לתינוקות בני 6 חודשים 
           </div>
           <p>
-            בגיל חצי שנה מתוקן יש להוסיף לתפריט התינוק מגוון מזונות בריאים. ישנם
+            בגיל חצי שנה (מתוקן) יש להוסיף לתפריט התינוק מגוון מזונות בריאים. ישנם
             מספר סימנים המראים על מוכנות התינוק לשינוי במרקם המזון (ממרקם נוזלי
             למרקם טחון, מעוך ולמוצקים רכים)
           </p>
-          <p className="paragraph-title">התינוק מוכן להתחיל מוצקים אם הוא:</p>
-
+          <p className="paragraph-title">מוכנות למוצקים</p>
+          <p>
+          התינוק מוכן להתחיל מוצקים אם הוא - 
+          
           <ul className="bulleted-list">
             <li>
               פיתח יכולת לשליטת ראש יציבה בקו האמצע בשכיבה על הבטן, ויכולת לשבת
@@ -31,7 +33,7 @@ export default function FirstTaste() {
             <li>חוקר עם הפה - מכניס חפצים לפה</li>
             <li>מצליח להעביר מזון בפה מצד לצד</li>
           </ul>
-
+          </p>
           <p className="paragraph-title">מתי להתחיל?</p>
           <p>
             מומלץ לחשוף את תינוקכם למוצקים בשעות הבוקר או הצהריים. מצאו שעה ביום
@@ -63,7 +65,7 @@ export default function FirstTaste() {
             בזמן הארוחה.{' '}
           </p>
 
-          <p className="paragraph-title">אז מה אוכלים?</p>
+          <p className="paragraph-title"> מה אוכלים?</p>
           <p>
             ירקות מבושלים טחונים או פירות טחונים. תינוקות לרוב יעדיפו את הטעם
             המתוק ולכן מומלץ להתחיל עם ירקות טחונים על מנת לעודד חשיפה לטעמים
@@ -123,9 +125,8 @@ export default function FirstTaste() {
           <p className="content-footer">
             סמכו על ילדכם - תינוק נולד עם מנגנון רעב ושובע והוא יודע מתי הוא
             רעב. ילד שאכל פחות בארוחה מסוימת ישלים את החסר בארוחות הבאות.{' '}
+            שיהיה בתאבון!
           </p>
-
-        <p>שיהיה בתאבון!</p>
           <div className="back-to-home-container">
             <Link to="/prematurity" className="back-to-home-button">
               חזרה לדף הבית
