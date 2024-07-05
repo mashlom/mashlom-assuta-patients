@@ -12,10 +12,10 @@ export default function IndexPage() {
       }}
     >
       <h1>
-        <Link to="/prematurity">mashlom-assuta-patients</Link>
+        <Link to="/prematurity">דפי מידע בפגייה</Link>
       </h1>
       <h1 id="assuta-patients">
-        <Link to="/surgeries/preparation">assuta-patients</Link>
+        <Link to="/surgeries/preparation">סרטוני הכנה לניתוח</Link>
       </h1>
     </div>
   );
