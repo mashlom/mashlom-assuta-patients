@@ -11,7 +11,7 @@ export default function OnTheWayHome() {
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title">
-            הדרכה להורים לתינוקות המשתחררים מהפגייה
+            הדרכה להורים לפגים המשתחררים מהפגייה
           </div>
           <p>הורים יקרים,</p>
           <p>

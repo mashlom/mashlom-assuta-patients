@@ -69,7 +69,7 @@ const links = [
       },
       { text: 'טעימות ראשונות', url: 'first-tastes' },
       {
-        text: 'בדרך הביתה – הדרכה לתינוקות המשתחררים מהפגייה',
+        text: 'הדרכת הורים לפגים המשתחררים מהפגייה',
         url: 'on-the-way-home',
       },
       // {
@@ -77,7 +77,7 @@ const links = [
       //   url: 'developmental-guidance-pre-release',
       // },
       {
-        text: 'הדרכה התפתחותית לקראת שחרור מהפגייה (במועד)',
+        text: 'הדרכת הורים לתינוקות המשתחררים מהפגייה',
         url: 'developmental-guidance-pre-release-due',
       },
       {
