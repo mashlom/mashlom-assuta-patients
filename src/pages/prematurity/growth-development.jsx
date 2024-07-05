@@ -132,7 +132,7 @@ export default function GrowthDevelopment() {
             הפג:
           </p>
 
-          <Image src="premature-world-states.png" />
+          <Image src="premature-world-states.png" className="all-page-image" />
           <p>צוות התפתחותי, אסותא אשדוד</p>
           <div className="back-to-home-container">
             <Link to="/prematurity" className="back-to-home-button">
