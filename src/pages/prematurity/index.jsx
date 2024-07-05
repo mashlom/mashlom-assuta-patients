@@ -45,13 +45,13 @@ const links = [
     title: 'הנקה, בנק חלב אם ושאיבת חלב אם בפגייה',
     pages: [
       {
-        text: 'דף הדרכה לשאיבת חלב אם ליולדת בפגייה',
+        text: 'שאיבת חלב אם ליולדת בפגייה',
         url: 'breast-milk-pumping-premature',
       },
       { text: 'שאיבת חלב אם', url: 'breast-milk-pumping' },
-      { text: 'דף מידע להורים - חלב אם מבנק חלב אם', url: 'breast-milk-bank' },
+      { text: 'חלב אם מבנק חלב אם', url: 'breast-milk-bank' },
       { text: 'סחיטת קולוסטרום', url: 'colostrum-extraction' },
-      { text: 'דף מידע - הנקה', url: 'breastfeeding-science' },
+      { text: 'הנקה', url: 'breastfeeding-science' },
     ],
   },
   {
@@ -69,10 +69,6 @@ const links = [
       },
       { text: 'טעימות ראשונות', url: 'first-tastes' },
       {
-        text: 'הדרכת הורים לתינוקות בני חודש עד 3 חודשים',
-        url: 'parent-guidance-clinic-1-3',
-      },
-      {
         text: 'בדרך הביתה – הדרכה לתינוקות המשתחררים מהפגייה',
         url: 'on-the-way-home',
       },
@@ -85,7 +81,11 @@ const links = [
         url: 'developmental-guidance-pre-release-due',
       },
       {
-        text: 'הדרכת הורים לתינוקות בני 3-6 חודשים מתוקן (מרפאת פגים)',
+        text: 'הדרכת הורים לתינוקות בני חודש עד 3 חודשים',
+        url: 'parent-guidance-clinic-1-3',
+      },
+      {
+        text: 'הדרכת הורים לתינוקות בני 3-6 חודשים',
         url: 'parent-guidance-clinic-3-6',
       },
     ],

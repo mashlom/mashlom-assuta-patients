@@ -5,14 +5,37 @@ import {
   differenceInWeeks,
   differenceInDays,
 } from 'date-fns';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import he from 'date-fns/locale/he';
 import './CorrectedAgeCalculator.scss';
 
 const FULL_TERM_WEEKS = 40;
+
+function formatCommas(input) {
+  // Trim the input string
+  let trimmedString = input.trim();
+
+  // Remove the last comma if it exists
+  if (trimmedString.endsWith(',')) {
+    trimmedString = trimmedString.slice(0, -1);
+  }
+
+  // Replace the last occurrence of ", " with "ו-"
+  const lastCommaSpaceIndex = trimmedString.lastIndexOf(', ');
+  if (lastCommaSpaceIndex !== -1) {
+    trimmedString = trimmedString.slice(0, lastCommaSpaceIndex) + ' ו-' + trimmedString.slice(lastCommaSpaceIndex + 2);
+  }
+
+  return trimmedString;
+}
 
 export default function CorrectedAgeCalculator() {
   const [birthDate, setBirthDate] = useState('');
   const [gestationWeeks, setGestationWeeks] = useState(40);
   const [ageToShow, setAgeToShow] = useState('');
+  const [isCalculated, setIsCalculated] = useState(false);
 
   const calculateAge = (birthDate, gestationWeeks) => {
     const today = new Date(); // Current date
@@ -66,17 +89,17 @@ export default function CorrectedAgeCalculator() {
     }
 
     let ageString = '';
-    if (years > 0) ageString += `${years} year${years > 1 ? 's' : ''}, `;
-    if (months > 0) ageString += `${months} month${months > 1 ? 's' : ''}, `;
-    if (weeks > 0) ageString += `${weeks} week${weeks > 1 ? 's' : ''}, `;
-    if (days > 0) ageString += `${days} day${days > 1 ? 's' : ''}`;
-
+    if (years > 0) ageString += years == 1 ? 'שנה, ' : years + ' שנים, ';
+    if (months > 0) ageString += months == 1 ? 'חודש, ' : months + ' חודשים, ';
+    if (weeks > 0) ageString += weeks == 1 ? 'שבוע, ' : weeks + ' שבועות, ';
+    if (days > 0) ageString += days == 1 ? 'יום, ' : days + ' ימים, ';
+    if (!ageString && days === 0) ageString = "0 ימים";
+    if (!ageString) ageString = "פחות מאפס";
     ageString = ageString.trim();
-    if (ageString.endsWith(',')) {
-      ageString = ageString.slice(0, -1);
-    }
+    ageString = formatCommas(ageString);
 
     setAgeToShow(ageString);
+    setIsCalculated(true);
   };
 
   return (
@@ -85,20 +108,24 @@ export default function CorrectedAgeCalculator() {
       <div className="form">
         <div className="form-row">
           <label htmlFor="birthDate">תינוקכם נולד בתאריך:</label>
-          <input
-            id="birthDate"
-            type="date"
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
-          />
+          <DatePicker
+          selected={birthDate}
+          onChange={(date) => setBirthDate(date)}
+          dateFormat="dd/MM/yyyy"
+          locale="he"
+          placeholderText="dd/mm/yyyy"
+          className="rtl-datepicker"
+          maxDate={new Date()}
+        />
+
         </div>
         <div className="form-row">
-          <label htmlFor="gestation-week">בשבוע מס׳ x להריון:</label>
+          <label htmlFor="gestation-week">בשבוע הריון:</label>
           <input
             id="gestation-week"
             type="number"
             min={0}
-            max={40}
+            max={44}
             value={gestationWeeks}
             onChange={(e) =>
               setGestationWeeks(e.target.value ? parseInt(e.target.value) : '')
@@ -112,10 +139,11 @@ export default function CorrectedAgeCalculator() {
         >
           חשב גיל מתוקן
         </button>
-        <div className="result">
-          <p>גיל מתוקן</p>
-          <p style={{ direction: 'ltr' }}>{ageToShow}</p>
+        {isCalculated && (
+        <div>
+          <p >גיל מתוקן: {ageToShow}</p>
         </div>
+        )}
       </div>
     </div>
   );
