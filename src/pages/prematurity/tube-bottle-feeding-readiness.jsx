@@ -10,16 +10,6 @@ export default function TubeBottleFeedingReadiness() {
       <div className="page-container">
         <div className="main-content">
           <div className="sub-title"> הדרכה להורה בזמן הזנה מזונדה</div>
-          <div className="reviewer-note">
-            בקובץ המתאים לקובץ הזה יש שני חלקים: הזנה מזונדה והאכלה מבקבוק עד
-            שבוע 34. <br />
-            ההאכלה מבקבוק היא כפולה עם
-            <a href="/prematurity/feeding-bottle-week34/">הדף הזה</a>
-            <br />
-            אמנם התוכן די כפול, אבל הוא לא אותו דבר. יש כמה חלקים שיש באחד ואין
-            בשני. לעת עתה, אנחנו לא מכניסים את החלק השני של הקובץ
-          </div>
-
           <p>
             אכילה דרך הפה דורשת בשלות נוירולוגית ונחשבת לפעילות מורכבת עבור הפג.
             לרוב היא מתאפשרת סביב שבוע 34, מכיוון שרק אז הפג מסוגל לאזן בין 3
