@@ -11,7 +11,6 @@ export default function BreastMilkPumping() {
         <div className="main-content">
           <div className="sub-title">שאיבת חלב</div>
           <p>אמא יקרה,</p>
-          <div className="reviewer-note">הייתי מנסח מחדש דף אחוד לדף הזה ולדף "שאיבת חלב ליולדת בפגיה"</div>
           <p>
             חלב אם הוא מזון-על לכל תינוק, ובייחוד אם נולד פג. חלב אם מספק
             לתינוקך מזון ויש לו תכונות ייחודיות המשתנות בהתאם לצרכיו האישיים
