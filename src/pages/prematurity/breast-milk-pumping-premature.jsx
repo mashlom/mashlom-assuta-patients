@@ -4,6 +4,12 @@ import Seo from '../../components/Seo';
 import { Link } from 'gatsby';
 import './prematurity.scss';
 
+// -----------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------
+// deprecated.
+// we were asked to remove this page, so I removed it from the index file
+// -----------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------
 export default function BreastMilkPumpingPremature() {
   return (
     <Layout coverTitle="חלב אם">

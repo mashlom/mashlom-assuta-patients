@@ -10,8 +10,7 @@ export default function BreastMilkBank() {
     <Layout coverTitle="חלב אם">
       <div className="page-container">
         <div className="main-content">
-          <div className="sub-title">חלב אם מבנק חלב אם</div>
-          <div className="reviewer-note">ניכר שכתב את הנל רופא, ולא אחות רחמניה. יש משהו קר מאוד בטקסט, שלא מתכתב עם שאר הכתבות. תשקלו לנסח מחדש</div>
+          <div className="sub-title">חלב אם מבנק חלב אם</div>        
           <p>
             הנקה הינו אופן ההזנה המומלץ לתינוקות ומוכרת ע"י ארגוני בריאות ורפואה
             בארץ ובעולם כסוגיה בבריאות הציבור ולא רק כבחירה של סגנון חיים. להזנה

@@ -43,10 +43,10 @@ const links = [
   {
     title: 'הנקה, בנק חלב אם ושאיבת חלב אם בפגייה',
     pages: [
-      {
-        text: 'שאיבת חלב אם ליולדת בפגייה',
-        url: 'breast-milk-pumping-premature',
-      },
+      // {
+      //   text: 'שאיבת חלב אם ליולדת בפגייה',
+      //   url: 'breast-milk-pumping-premature',
+      // },
       { text: 'שאיבת חלב אם', url: 'breast-milk-pumping' },
       { text: 'חלב אם מבנק חלב אם', url: 'breast-milk-bank' },
       { text: 'סחיטת קולוסטרום', url: 'colostrum-extraction' },
