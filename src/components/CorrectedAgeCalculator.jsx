@@ -5,8 +5,6 @@ import {
 } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
-import he from 'date-fns/locale/he';
 import './CorrectedAgeCalculator.scss';
 
 const FULL_TERM_WEEKS = 40;
@@ -25,8 +23,8 @@ function formatCommas(input) {
   if (lastCommaSpaceIndex !== -1) {
     trimmedString = trimmedString.slice(0, lastCommaSpaceIndex) + ' ו-' + trimmedString.slice(lastCommaSpaceIndex + 2);
   }
-
-  return trimmedString;
+  
+  return trimmedString.replace(/ו-יום/g, "ויום");
 }
 
 export default function CorrectedAgeCalculator() {
@@ -59,8 +57,8 @@ export default function CorrectedAgeCalculator() {
     }
 
     let ageString = '';
-    if (weeks > 0) ageString += weeks == 1 ? 'שבוע, ' : weeks + ' שבועות, ';
-    if (days > 0) ageString += days == 1 ? 'יום, ' : days + ' ימים, ';
+    if (weeks > 0) ageString += weeks === 1 ? 'שבוע, ' : weeks + ' שבועות, ';
+    if (days > 0) ageString += days === 1 ? 'יום, ' : days + ' ימים, ';
     if (!ageString && days === 0) ageString = "0 ימים";
     if (!ageString) ageString = "פחות מאפס";
     if (years >= 2) ageString = "שנתיים ומעלה";  // for avoiding redundant caluculation (as above 2 years no special treatment)
