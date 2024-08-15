@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import {
   differenceInYears,
+  differenceInMonths,
+  differenceInWeeks,
   differenceInDays,
 } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import he from 'date-fns/locale/he';
 import './CorrectedAgeCalculator.scss';
 
 const FULL_TERM_WEEKS = 40;
+const DAYS_IN_WEEK = 7;
 
 function formatCommas(input) {
   // Trim the input string
@@ -23,48 +28,89 @@ function formatCommas(input) {
   if (lastCommaSpaceIndex !== -1) {
     trimmedString = trimmedString.slice(0, lastCommaSpaceIndex) + ' ו-' + trimmedString.slice(lastCommaSpaceIndex + 2);
   }
-  
-  return trimmedString.replace(/ו-יום/g, "ויום");
+
+  return trimmedString.replace(/ו-יום/g, "ויום").replace(/ו-שבוע/g, "ושבוע");
 }
 
 export default function CorrectedAgeCalculator() {
-  const [birthDate, setBirthDate] = useState('');
-  const [gestationWeeks, setGestationWeeks] = useState(40);
+  const [birthDate, setBirthDate] = useState(null);
+  const [gestationWeeks, setGestationWeeks] = useState('');
+  const [gestationDays, setGestationDays] = useState('');
   const [ageToShow, setAgeToShow] = useState('');
   const [isCalculated, setIsCalculated] = useState(false);
 
-  const calculateAge = (birthDate, gestationWeeks) => {
-    const today = new Date(); // Current date
-    const birth = new Date(birthDate); // Birth date
-    
-    if (gestationWeeks > 40) gestationWeeks = 40; // for birth after week 40, no need to fix the child age
-    const prematureWeeks = FULL_TERM_WEEKS - gestationWeeks;
-
-    // Calculate differences in years and days
-    let days = differenceInDays(today,birth);
-    let weeks;
-    // calculating years considering the premature weeks. placed after days calculation as it change the 'birth' value
-    let years = differenceInYears(today, birth.setDate(birth.getDate() + (prematureWeeks * 7))); 
-   
-    if (years < 2) {
-      const ageInDays = days;
-      const correctedAgeInDays = ageInDays - prematureWeeks * 7;
-
-      weeks = Math.floor(correctedAgeInDays / 7);
-      days = (correctedAgeInDays - (weeks*7));
-      if (correctedAgeInDays < 0) days = correctedAgeInDays; // for getting the "פחות מאפס" output
-
+  const calculateAge = (birthDate, gestationWeeks, gestationDays) => {
+    if (!birthDate || !gestationWeeks) return;
+    if (!gestationDays) {
+      gestationDays = 0;
     }
-
+  
+    // Check if the baby is not premature
+    if (gestationWeeks >= 37) {
+      setAgeToShow("התינוק אינו פג, ניתן להשתמש בגיל הכרונולוגי");
+      setIsCalculated(true);
+      return;
+    }
+  
+    const today = new Date();
+    const birth = new Date(birthDate);
+  
+    // Calculate the total number of days premature
+    const totalGestationDays = gestationWeeks * DAYS_IN_WEEK + gestationDays;
+    const daysPremature = (FULL_TERM_WEEKS * DAYS_IN_WEEK) - totalGestationDays;
+  
+    // Calculate the chronological age in days
+    const chronologicalAgeDays = differenceInDays(today, birth);
+  
+    // Calculate the corrected age in days
+    const correctedAgeDays = chronologicalAgeDays - daysPremature;
+  
+    if (correctedAgeDays <= 0) {
+      // Calculate current pregnancy week and days
+      const totalDaysPregnant = totalGestationDays + chronologicalAgeDays;
+      const currentWeeks = Math.floor(totalDaysPregnant / DAYS_IN_WEEK);
+      const currentDays = totalDaysPregnant % DAYS_IN_WEEK;
+  
+      setAgeToShow(`שבוע ${currentDays}+${currentWeeks} להריון`);
+      setIsCalculated(true);
+      return;
+    }
+  
+    // Convert corrected age days to months, weeks, and days
+    const totalMonths = Math.floor(correctedAgeDays / 30);
+    const remainingDays = correctedAgeDays % 30;
+    const weeks = Math.floor(remainingDays / 7);
+    const days = remainingDays % 7;
+  
     let ageString = '';
-    if (weeks > 0) ageString += weeks === 1 ? 'שבוע, ' : weeks + ' שבועות, ';
-    if (days > 0) ageString += days === 1 ? 'יום, ' : days + ' ימים, ';
-    if (!ageString && days === 0) ageString = "0 ימים";
-    if (!ageString) ageString = "פחות מאפס";
-    if (years >= 2) ageString = "שנתיים ומעלה";  // for avoiding redundant caluculation (as above 2 years no special treatment)
-    ageString = ageString.trim();
+  
+    if (totalMonths < 6) {
+      // Less than 6 months: use only weeks and days
+      const totalWeeks = Math.floor(correctedAgeDays / 7);
+      const remainingDays = correctedAgeDays % 7;
+      
+      if (totalWeeks > 0) ageString += totalWeeks === 1 ? 'שבוע אחד' : totalWeeks + ' שבועות';
+      if (remainingDays > 0) {
+        if (totalWeeks > 0) ageString += ', ';
+        ageString += remainingDays === 1 ? 'יום אחד' : remainingDays + ' ימים';
+      }
+    } else {
+      // 6 months or more: use months, weeks, and days
+      if (totalMonths > 0) ageString += totalMonths === 1 ? 'חודש אחד' : totalMonths + ' חודשים';
+      if (weeks > 0) {
+        if (totalMonths > 0) ageString += ', ';
+        ageString += weeks === 1 ? 'שבוע אחד' : weeks + ' שבועות';
+      }
+      if (days > 0) {
+        if (totalMonths > 0 || weeks > 0) ageString += ', ';
+        ageString += days === 1 ? 'יום אחד' : days + ' ימים';
+      }
+    }
+  
+    if (!ageString) ageString = "0 ימים";
+  
     ageString = formatCommas(ageString);
-
+  
     setAgeToShow(ageString);
     setIsCalculated(true);
   };
@@ -76,39 +122,58 @@ export default function CorrectedAgeCalculator() {
         <div className="form-row">
           <label htmlFor="birthDate">תינוקכם נולד בתאריך:</label>
           <DatePicker
-          selected={birthDate}
-          onChange={(date) => setBirthDate(date)}
-          dateFormat="dd/MM/yyyy"
-          locale="he"
-          placeholderText="dd/mm/yyyy"
-          className="rtl-datepicker"
-          maxDate={new Date()}
-        />
-
-        </div>
-        <div className="form-row">
-          <label htmlFor="gestation-week">בשבוע הריון:</label>
-          <input
-            id="gestation-week"
-            type="number"
-            min={0}
-            max={44}
-            value={gestationWeeks}
-            onChange={(e) =>
-              setGestationWeeks(e.target.value ? parseInt(e.target.value) : '')
-            }
+            selected={birthDate}
+            onChange={(date) => setBirthDate(date)}
+            dateFormat="dd/MM/yyyy"
+            locale="he"
+            placeholderText="dd/mm/yyyy"
+            className="rtl-datepicker"
+            maxDate={new Date()}
           />
+        </div>
+        <div className="form-row gestation-input">
+          <label>בשבוע הריון:</label>
+          <div className="gestation-inputs">
+            <input
+              id="gestation-week"
+              type="number"
+              min={20}
+              max={44}
+              value={gestationWeeks}
+              onChange={(e) => {
+                const value = parseInt(e.target.value);
+                if (!isNaN(value) && value >= 0 && value <= 44) {
+                  setGestationWeeks(value);
+                }
+              }}              
+              placeholder="שבוע לידה"
+            />
+            <input
+              id="gestation-days"
+              type="number"
+              min={0}
+              max={6}
+              value={gestationDays}
+              onChange={(e) => {
+                const value = parseInt(e.target.value);
+                if (!isNaN(value) && value >= 0 && value <= 6) {
+                  setGestationDays(value);
+                }
+              }}
+              placeholder="+ימים"
+            />
+          </div>
         </div>
         <button
           onClick={() => {
-            calculateAge(birthDate, gestationWeeks);
+            calculateAge(birthDate, gestationWeeks, gestationDays);
           }}
         >
           חשב גיל מתוקן
         </button>
         {isCalculated && (
         <div>
-          <p >גיל מתוקן: {ageToShow}</p>
+          <p><b>גיל מתוקן: {ageToShow}</b></p>
         </div>
         )}
       </div>

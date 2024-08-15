@@ -46,6 +46,25 @@
         color: var(--green);
         margin-top: 5px;
       }
+
+      &.gestation-input {
+        .gestation-inputs {
+          display: flex;
+          gap: 10px;
+          width: 100%;
+
+          input {
+            flex: 1;
+            min-width: 0; // This allows the input to shrink below its default size
+            width: 50%; // Set both inputs to take up equal width
+          }
+
+          // Remove the different flex values for week and day inputs
+          // #gestation-week, #gestation-days {
+          //   flex: 1;
+          // }
+        }
+      }
     }
 
     button {
@@ -87,5 +106,22 @@
   .react-datepicker-wrapper, 
   .react-datepicker-wrapper input {
     width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    .form {
+      .form-row {
+        &.gestation-input {
+          .gestation-inputs {
+            gap: 5px; // Reduce gap on small screens
+
+            input {
+              font-size: 14px; // Slightly smaller font on mobile
+              padding: 8px; // Slightly smaller padding on mobile
+            }
+          }
+        }
+      }
+    }
   }
 }
