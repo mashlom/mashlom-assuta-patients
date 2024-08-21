@@ -14,10 +14,14 @@ const Layout = ({
 }) => {
 
   useEffect(() => {
-    // const script = document.createElement('script');
-    // script.src = "/nagishli.js?v=2.3";
-    // script.async = true;
-    // document.body.appendChild(script);
+    const scriptId = 'nagishli-script';
+    if (!document.getElementById(scriptId)) {
+      const script = document.createElement('script');
+      script.id = scriptId;
+      script.src = "/nagishli.js?v=2.3";
+      script.async = true;
+      document.body.appendChild(script);
+    }
   }, []);
 
   useBodyDirection();

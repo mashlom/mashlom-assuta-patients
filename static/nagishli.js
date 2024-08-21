@@ -329,16 +329,29 @@ a("ul li a")[0]||a("*[class*='menu']")[0]||a("*[id*='menu']")[0]:"header"==b?c=d
 document.getElementsByTagName("section")[0]||document.getElementsByTagName("h2")[0]||document.getElementsByTagName("h3")[0]||document.getElementsByTagName("p")[0]||document.getElementsByTagName("div")[0]||document.getElementsByTagName("body")[0]);c.scrollIntoView();a("body[nl-kbnav]").length&&c.focus()}});a(".link:not(a)").attr("role","link");document.getElementsByTagName("title")[0].length||(J=0<document.getElementsByTagName("h1").length?document.getElementsByTagName("h1")[0]:phrases.untitled_page,
 w=document.createElement("title"),w.innerHTML=J,document.getElementsByTagName("head")[0].appendChild(w))})};
 
-setTimeout(function() {
-    const elements = [document.getElementById('NagishLiBarStrip')];
-    // Check if the element exists
-    for (i = 0; i < elements.length; ++i) {
-        if (elements[i]) {
-        // Change the background color to white with !important
-        elements[i].style.setProperty('background-color', 'transparent', 'important');
-        elements[i].style.setProperty('box-shadow', 'none', 'important');
-        elements[i].style.setProperty('color', 'black', 'important');
+const intervalId = setInterval(function() {
+    const nagishLiBar = document.getElementById('NagishLiBar');
+    const nagishLiBarStrip = document.getElementById('NagishLiBarStrip');
+
+    if (nagishLiBar && nagishLiBarStrip) {
+        // Stop the interval once the elements are found
+        clearInterval(intervalId);
+
+        // Check if the device is mobile
+        const isMobile = window.innerWidth <= 768; // Adjust the breakpoint as needed
+
+        // Apply styles based on the device type
+        if (isMobile) {
+            nagishLiBar.style.cssText += 'top: 10px !important;';
+            nagishLiBarStrip.style.setProperty('background-color', 'transparent', 'important');
+            nagishLiBarStrip.style.setProperty('box-shadow', 'none', 'important');
+            nagishLiBarStrip.style.setProperty('border-radius', '5px', 'important');
+            nagishLiBarStrip.style.setProperty('color', 'black', 'important');
+        } else {
+            nagishLiBar.style.cssText += 'top: 30vh !important;';
+            nagishLiBarStrip.style.setProperty('background-color', 'transparent', 'important');            
+            nagishLiBarStrip.style.setProperty('border-radius', '5px', 'important');
+            nagishLiBarStrip.style.setProperty('color', 'black', 'important');
         }
     }
-    
-}, 200);
+}, 10);
