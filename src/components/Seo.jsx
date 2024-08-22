@@ -5,14 +5,21 @@
  * See: https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/
  */
 
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import favIcon from '../images/assuta/favicon-32x32.png';
 import appleTouchIcon from '../images/assuta/apple-touch-icon.png';
 
-export default function Seo ({ title, description, children, location, pageKeywords }) {
+export default function Seo({ title, description, children, location, pageKeywords }) {
   const siteUrl = 'https://assuta-ashdod.mashlom.me';
-  const pageUrl = location ? `${siteUrl}${location?.pathname}` : window.location.href.split('?')[0];
+  const [pageUrl, setPageUrl] = useState(location ? `${siteUrl}${location?.pathname}` : '');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setPageUrl(location ? `${siteUrl}${location?.pathname}` : window.location.href.split('?')[0]);
+    }
+  }, [location, siteUrl]);
+
   const { site } = useStaticQuery(
     graphql`
       query {
