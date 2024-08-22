@@ -14,13 +14,22 @@ const Layout = ({
 }) => {
 
   useEffect(() => {
-    const scriptId = 'nagishli-script';
-    if (!document.getElementById(scriptId)) {
-      const script = document.createElement('script');
-      script.id = scriptId;
-      script.src = "/nagishli.js?v=2.3";
-      script.async = true;
-      document.body.appendChild(script);
+    const loadNagishliScript = () => {
+      const scriptId = 'nagishli-script';
+      if (!document.getElementById(scriptId)) {
+        const script = document.createElement('script');
+        script.id = scriptId;
+        script.src = "/nagishli.js?v=2.3";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      loadNagishliScript();
+    } else {
+      window.addEventListener('load', loadNagishliScript);
+      return () => window.removeEventListener('load', loadNagishliScript);
     }
   }, []);
 

@@ -12,8 +12,7 @@ import appleTouchIcon from '../images/assuta/apple-touch-icon.png';
 
 export default function Seo ({ title, description, children, location, pageKeywords }) {
   const siteUrl = 'https://assuta-ashdod.mashlom.me';
-  const pageUrl = `${siteUrl}${location?.pathname}`;
-  
+  const pageUrl = location ? `${siteUrl}${location?.pathname}` : window.location.href.split('?')[0];
   const { site } = useStaticQuery(
     graphql`
       query {
