@@ -4,9 +4,15 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build-and-preview:
     runs-on: ubuntu-latest
+    environment: github-pages
     env:
       PR_PATH: pull/${{ github.event.number }}
     steps:
@@ -18,11 +24,13 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          static_site_generator: gatsby
+
       - name: Install dependencies
         run: npm ci
-
-      - name: Set PR preview base URL
-        run: echo "BASE_URL=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ env.PR_PATH }}/" >> $GITHUB_ENV
 
       - name: Build Gatsby site
         env:
@@ -32,12 +40,17 @@ jobs:
         run: |
           npm run build -- --prefix-paths
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          destination_dir: ${{ env.PR_PATH }}
+          path: ./public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          preview: true
+          path: ${{ env.PR_PATH }}
 
       - name: Find existing comment
         uses: peter-evans/find-comment@v2
@@ -54,10 +67,7 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           body: |
             📝 PR Preview
-
             A preview of this PR has been deployed to GitHub Pages.
-
-            🔗 Preview URL: ${{ env.BASE_URL }}
-
+            🔗 Preview URL: ${{ steps.deployment.outputs.page_url }}
             This preview will update automatically when new changes are pushed to this PR.
           edit-mode: replace
