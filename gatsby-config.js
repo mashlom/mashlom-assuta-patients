@@ -4,15 +4,15 @@ require("dotenv").config({
 
 const { GA_ID } = process.env
 
-const isPreview = process.env.GATSBY_ACTIVE_ENV === 'preview'
+// const isPreview = process.env.GATSBY_ACTIVE_ENV === 'preview'
 
-let pathPrefix = '/'
+const pathPrefix = '/'
 
-if (isPreview) {
-  // For PR previews, we need to use a dynamic path prefix
-  // This will be set by the GitHub Actions workflow
-  pathPrefix = process.env.PR_PATH || '/preview'
-}
+// if (isPreview) {
+//   // For PR previews, we need to use a dynamic path prefix
+//   // This will be set by the GitHub Actions workflow
+//   pathPrefix = process.env.PR_PATH || '/preview'
+// }
 
 /**
  * @type {import('gatsby').GatsbyConfig}
