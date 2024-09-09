@@ -8,7 +8,7 @@ const isPreview = process.env.GATSBY_ACTIVE_ENV === 'preview'
 
 let pathPrefix = '/'
 
-if (isPreview) {
+if (isPreview) { 
   // For PR previews, we need to use a dynamic path prefix
   // This will be set by the GitHub Actions workflow
   pathPrefix = process.env.PR_PATH || '/preview'
