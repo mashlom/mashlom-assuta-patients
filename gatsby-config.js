@@ -4,11 +4,21 @@ require("dotenv").config({
 
 const { GA_ID } = process.env
 
+const isPreview = process.env.GATSBY_ACTIVE_ENV === 'preview'
+
+let pathPrefix = '/'
+
+if (isPreview) {
+  // For PR previews, we need to use a dynamic path prefix
+  // This will be set by the GitHub Actions workflow
+  pathPrefix = process.env.PR_PATH || '/preview'
+}
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  pathPrefix: `/`,
+  pathPrefix: pathPrefix,
   siteMetadata: {
     title: `חווית מטופל - אסותא אשדוד`,
     description: `חווית מטופל - אסותא אשדוד`,
