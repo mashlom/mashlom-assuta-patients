@@ -19,12 +19,6 @@ const pathPrefix = '/'
  */
 module.exports = {
   pathPrefix: pathPrefix,
-  siteMetadata: {
-    title: `חווית מטופל - אסותא אשדוד`,
-    description: `חווית מטופל - אסותא אשדוד`,
-    author: `@relbns`,
-    siteUrl: `https://mashlom.github.io/`,
-  },
   plugins: [
     `gatsby-plugin-sass`,
     {
