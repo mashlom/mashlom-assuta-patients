@@ -1,63 +1,23 @@
-name: Gatsby PR Preview
-
+# .github/workflows/preview.yml
+name: Deploy PR previews
+concurrency: preview-${{ github.ref }}
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-  pull-requests: write
-
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
 jobs:
-  build-and-preview:
+  deploy-preview:
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
+      - run: npm i && npm run build
+        if: github.event.action != 'closed'
+      - uses: rossjrw/pr-preview-action@v1
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Gatsby site
-        env:
-          PREFIX_PATHS: 'true'
-          GATSBY_ACTIVE_ENV: 'preview'
-          PR_PATH: pr-preview/${{ github.event.number }}
-        run: |
-          npm run build -- --prefix-paths
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          preview: true
-
-      - name: Comment PR
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.name,
-              body: `🚀 PR preview deployed to: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/deployments/activity_log?environment=github-pages`
-            })
+          source-dir: .
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: auto
