@@ -28,6 +28,7 @@ jobs:
         env:
           PREFIX_PATHS: 'true'
           GATSBY_ACTIVE_ENV: 'preview'
+          PR_PATH: ${{ env.PR_PATH }}
         run: |
           npm run build -- --prefix-paths
 
