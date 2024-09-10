@@ -1,72 +1,74 @@
-name: Gatsby PR Preview
+name: PR Preview
+
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
 
 jobs:
-  build-and-deploy-preview:
-    runs-on: ubuntu-latest
+  build-and-preview:
     if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
+          node-version: '20'
+      
+      - name: Get PR number
+        run: echo "PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')" >> $GITHUB_ENV
+      
       - name: Install dependencies
         run: npm ci
-
+      
       - name: Build Gatsby site
-        run: |
-          echo "module.exports = { pathPrefix: '/pr-preview/pr-${{ github.event.number }}' }" > gatsby-config.js
-          npm run build
         env:
-          CI: true
-
-      - name: Deploy preview
+          PREFIX_PATHS: 'true'
+          GA_ID: ${{ secrets.GA_ID }}
+          PATH_PREFIX: /pr-preview/pr-${{ env.PR_NUMBER }}
+        run: |
+          npm run build
+      
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          destination_dir: pr-preview/pr-${{ github.event.number }}
-
+          destination_dir: pr-preview/pr-${{ env.PR_NUMBER }}
+      
       - name: Comment PR
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
-              repo: context.repo.name,
-              body: 'Preview this PR at: https://${{ github.event.repository.owner.login }}.github.io/${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.number }}/'
+              repo: context.repo.repo,
+              body: 'Preview this PR at: https://${process.env.GITHUB_REPOSITORY_OWNER}.github.io/${context.repo.repo}/pr-preview/pr-${{ env.PR_NUMBER }}/'
             })
 
-  cleanup-preview:
-    runs-on: ubuntu-latest
+  cleanup:
     if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Deploy empty dir to remove preview
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          destination_dir: pr-preview/pr-${{ github.event.number }}
+      - name: Clean up PR preview
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          git push origin --delete gh-pages:pr-preview/pr-$PR_NUMBER || echo "Branch not found, skipping deletion"
 
       - name: Comment PR
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
-              repo: context.repo.name,
-              body: 'PR closed. Preview has been removed.'
+              repo: context.repo.repo,
+              body: 'PR preview has been cleaned up.'
             })
