@@ -20,13 +20,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Debug - Show Gatsby config
+        run: cat gatsby-config.js
+      
       - name: Build Gatsby site
         env:
-          PREFIX_PATHS: 'true'
-          GA_ID: ${{ secrets.GA_ID }}
           PATH_PREFIX: /pr-preview/pr-${{ env.PR_NUMBER }}
+          GA_ID: ${{ secrets.GA_ID }}
         run: |
+          echo "Building with PATH_PREFIX=$PATH_PREFIX"
           npm run build
+      
+      - name: Debug - List build output
+        run: |
+          echo "Contents of public directory:"
+          ls -R public
       
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -35,34 +43,13 @@ jobs:
           publish_dir: ./public
           destination_dir: pr-preview/pr-${{ env.PR_NUMBER }}
       
-      - name: Comment PR
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.PAT }}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: `Preview this PR at: https://${context.repo.owner}.github.io/${context.repo.repo}/pr-preview/pr-${process.env.PR_NUMBER}/`
-            })
-
-  cleanup:
-    if: github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT }}
-
-      - name: Clean up PR preview
-        env:
-          GH_TOKEN: ${{ secrets.PAT }}
+      - name: Debug - Check gh-pages branch
         run: |
-          PR_NUMBER="${{ github.event.pull_request.number }}"
-          git push origin --delete gh-pages:pr-preview/pr-$PR_NUMBER || echo "Branch not found, skipping deletion"
-
+          git fetch origin gh-pages
+          git checkout gh-pages
+          echo "Contents of pr-preview/pr-${{ env.PR_NUMBER }}:"
+          ls -R pr-preview/pr-${{ env.PR_NUMBER }}
+      
       - name: Comment PR
         uses: actions/github-script@v7
         with:
@@ -72,5 +59,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'PR preview has been cleaned up.'
+              body: `Preview this PR at: https://assuta-ashdod.mashlom.me/pr-preview/pr-${process.env.PR_NUMBER}/`
             })
+
+  # ... rest of the workflow remains the same
