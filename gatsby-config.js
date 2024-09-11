@@ -3,18 +3,12 @@ require("dotenv").config({
 })
 
 const { GA_ID } = process.env
-
+ 
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
-  pathPrefix: `/`,
-  siteMetadata: {
-    title: `חווית מטופל - אסותא אשדוד`,
-    description: `חווית מטופל - אסותא אשדוד`,
-    author: `@relbns`,
-    siteUrl: `https://mashlom.github.io/`,
-  },
+  pathPrefix: process.env.PATH_PREFIX || '/',
   plugins: [
     `gatsby-plugin-sass`,
     {

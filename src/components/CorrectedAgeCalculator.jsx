@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import {
-  differenceInYears,
-  differenceInMonths,
-  differenceInWeeks,
-  differenceInDays,
-} from 'date-fns';
+import { differenceInDays } from 'date-fns';
 import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
-import he from 'date-fns/locale/he';
+import 'react-datepicker/dist/react-datepicker.css';
 import './CorrectedAgeCalculator.scss';
 
 const FULL_TERM_WEEKS = 40;
@@ -26,10 +19,13 @@ function formatCommas(input) {
   // Replace the last occurrence of ", " with "ו-"
   const lastCommaSpaceIndex = trimmedString.lastIndexOf(', ');
   if (lastCommaSpaceIndex !== -1) {
-    trimmedString = trimmedString.slice(0, lastCommaSpaceIndex) + ' ו-' + trimmedString.slice(lastCommaSpaceIndex + 2);
+    trimmedString =
+      trimmedString.slice(0, lastCommaSpaceIndex) +
+      ' ו-' +
+      trimmedString.slice(lastCommaSpaceIndex + 2);
   }
 
-  return trimmedString.replace(/ו-יום/g, "ויום").replace(/ו-שבוע/g, "ושבוע");
+  return trimmedString.replace(/ו-יום/g, 'ויום').replace(/ו-שבוע/g, 'ושבוע');
 }
 
 export default function CorrectedAgeCalculator() {
@@ -44,59 +40,61 @@ export default function CorrectedAgeCalculator() {
     if (!gestationDays) {
       gestationDays = 0;
     }
-  
+
     // Check if the baby is not premature
     if (gestationWeeks >= 37) {
-      setAgeToShow("התינוק אינו פג, ניתן להשתמש בגיל הכרונולוגי");
+      setAgeToShow('התינוק אינו פג, ניתן להשתמש בגיל הכרונולוגי');
       setIsCalculated(true);
       return;
     }
-  
+
     const today = new Date();
     const birth = new Date(birthDate);
-  
+
     // Calculate the total number of days premature
     const totalGestationDays = gestationWeeks * DAYS_IN_WEEK + gestationDays;
-    const daysPremature = (FULL_TERM_WEEKS * DAYS_IN_WEEK) - totalGestationDays;
-  
+    const daysPremature = FULL_TERM_WEEKS * DAYS_IN_WEEK - totalGestationDays;
+
     // Calculate the chronological age in days
     const chronologicalAgeDays = differenceInDays(today, birth);
-  
+
     // Calculate the corrected age in days
     const correctedAgeDays = chronologicalAgeDays - daysPremature;
-  
+
     if (correctedAgeDays <= 0) {
       // Calculate current pregnancy week and days
       const totalDaysPregnant = totalGestationDays + chronologicalAgeDays;
       const currentWeeks = Math.floor(totalDaysPregnant / DAYS_IN_WEEK);
       const currentDays = totalDaysPregnant % DAYS_IN_WEEK;
-  
+
       setAgeToShow(`שבוע ${currentDays}+${currentWeeks} להריון`);
       setIsCalculated(true);
       return;
     }
-  
+
     // Convert corrected age days to months, weeks, and days
     const totalMonths = Math.floor(correctedAgeDays / 30);
     const remainingDays = correctedAgeDays % 30;
     const weeks = Math.floor(remainingDays / 7);
     const days = remainingDays % 7;
-  
+
     let ageString = '';
-  
+
     if (totalMonths < 6) {
       // Less than 6 months: use only weeks and days
       const totalWeeks = Math.floor(correctedAgeDays / 7);
       const remainingDays = correctedAgeDays % 7;
-      
-      if (totalWeeks > 0) ageString += totalWeeks === 1 ? 'שבוע אחד' : totalWeeks + ' שבועות';
+
+      if (totalWeeks > 0)
+        ageString += totalWeeks === 1 ? 'שבוע אחד' : totalWeeks + ' שבועות';
       if (remainingDays > 0) {
         if (totalWeeks > 0) ageString += ', ';
         ageString += remainingDays === 1 ? 'יום אחד' : remainingDays + ' ימים';
       }
     } else {
       // 6 months or more: use months, weeks, and days
-      if (totalMonths > 0) ageString += totalMonths === 1 ? 'חודש אחד' : totalMonths + ' חודשים';
+      if (totalMonths > 0)
+        ageString += totalMonths === 1 ? 'חודש אחד' : totalMonths + ' חודשים';
       if (weeks > 0) {
         if (totalMonths > 0) ageString += ', ';
         ageString += weeks === 1 ? 'שבוע אחד' : weeks + ' שבועות';
@@ -106,11 +104,11 @@ export default function CorrectedAgeCalculator() {
         ageString += days === 1 ? 'יום אחד' : days + ' ימים';
       }
     }
-  
-    if (!ageString) ageString = "0 ימים";
-  
+
+    if (!ageString) ageString = '0 ימים';
+
     ageString = formatCommas(ageString);
-  
+
     setAgeToShow(ageString);
     setIsCalculated(true);
   };
@@ -132,7 +130,7 @@ export default function CorrectedAgeCalculator() {
           />
         </div>
         <div className="form-row gestation-input">
-          <label>בשבוע הריון:</label>
+          <label htmlFor="gestation-week">בשבוע הריון:</label>
           <div className="gestation-inputs">
             <input
               id="gestation-week"
@@ -145,7 +143,7 @@ export default function CorrectedAgeCalculator() {
                 if (!isNaN(value) && value >= 0 && value <= 44) {
                   setGestationWeeks(value);
                 }
-              }}              
+              }}
               placeholder="שבוע לידה"
             />
             <input
@@ -172,9 +170,11 @@ export default function CorrectedAgeCalculator() {
           חשב גיל מתוקן
         </button>
         {isCalculated && (
-        <div>
-          <p><b>גיל מתוקן: {ageToShow}</b></p>
-        </div>
+          <div>
+            <p>
+              <b>גיל מתוקן: {ageToShow}</b>
+            </p>
+          </div>
         )}
       </div>
     </div>

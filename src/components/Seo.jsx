@@ -6,7 +6,6 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import favIcon from '../images/assuta/favicon-32x32.png';
 import appleTouchIcon from '../images/assuta/apple-touch-icon.png';
 
@@ -20,21 +19,7 @@ export default function Seo({ title, description, children, location, pageKeywor
     }
   }, [location, siteUrl]);
 
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  );
-
-  const metaDescription = description || site?.siteMetadata?.description;
+  const metaDescription = description || '';
   const defaultKeywords = "assuta ashdod, רפואת ילדים, אסותא אשדוד"
   const keywords = pageKeywords || defaultKeywords;
 
@@ -78,7 +63,7 @@ export default function Seo({ title, description, children, location, pageKeywor
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
+      <meta name="twitter:creator" content={''} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
       {children}
