@@ -3,7 +3,7 @@ require("dotenv").config({
 })
 
 const { GA_ID } = process.env
- 
+
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
