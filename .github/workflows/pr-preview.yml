@@ -38,13 +38,13 @@ jobs:
       - name: Comment PR
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAT }}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Preview this PR at: https://${process.env.GITHUB_REPOSITORY_OWNER}.github.io/${context.repo.repo}/pr-preview/pr-${{ env.PR_NUMBER }}/'
+              body: `Preview this PR at: https://${context.repo.owner}.github.io/${context.repo.repo}/pr-preview/pr-${process.env.PR_NUMBER}/`
             })
 
   cleanup:
@@ -66,7 +66,7 @@ jobs:
       - name: Comment PR
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAT }}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
