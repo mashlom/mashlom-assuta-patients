@@ -37,7 +37,7 @@ const Layout = ({
   return (
     <div>
       <Header isShowLangSwitcher={isShowLangSwitcher} />
-      <main>
+      <main style={{textAlign: 'start'}}>
         {includeCover && <Cover title={coverTitle} />}
         {children}
       </main>

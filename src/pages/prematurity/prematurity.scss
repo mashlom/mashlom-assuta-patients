@@ -5,7 +5,12 @@
     --blue1: #0f2d6c;
     --green: #72a00e;
     --light-green: #DBECD0;
-  }  
+  }
+
+.category {
+    width: 100%;
+    padding-right: 15px;
+}
 
 .index-category-title{
     font-size: 30px;
@@ -47,6 +52,7 @@
     background-color: var(--blue);
     line-height: 21px;
     text-align: center;
+    width: 100%;
 }
 
 p {
@@ -64,6 +70,7 @@ p {
     margin-inline-end: 0px;
     unicode-bidi: isolate;
     box-sizing: border-box;
+    width: 100%;
 }
 
 li {
