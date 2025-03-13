@@ -26,17 +26,19 @@
 
     .header-contact {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       font-size: 20px;
       height: 47px;
-      padding: 14px;
-      margin-right: 18px;
+      padding-right: 10px;
+      padding-left: 10px;
+      margin-right: 10px;
       border-right: 1px solid #e2e2e2;
 
       .assuta-call-text {
         color: var(--green);
         font-weight: bold;
         display: flex;
+        align-items: center;
       }
 
       .assuta-call-phone {

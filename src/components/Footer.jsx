@@ -59,7 +59,7 @@ const Footer = () => (
         <ul className="footer-ul">
           <li>
             <Image
-              src="assuta/human-exp-logo-gray.png"
+              src="assuta/footer-logo.png"
               alt="human experience logo"
               className="footer-image-size"
               style={{ marginLeft: '20px' }}

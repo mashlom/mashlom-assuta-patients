@@ -61,7 +61,7 @@ export default function NutritionalGuidancePreRelease() {
 
           <p className="paragraph-title">עד מתי לתת תמ"ל המשך לפגים?</p>
           <p>משך התזונה ייקבע לפי:</p>
-          <ul className="numbered-list">
+          <ul className="numbered-list" style={{width: '100%'}}>
             <li>מעקב הגדילה בטיפת חלב.</li>
             <li>הערכה של דיאטנית פגים בקופת החולים והמלצתה.</li>
           </ul>

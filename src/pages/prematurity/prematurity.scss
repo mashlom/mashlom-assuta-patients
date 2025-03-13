@@ -2,9 +2,9 @@
     --white: #ffffff;
     --black: var(--black);
     --blue: #0e2f74;
-    --blue1: #0f2d6c;
-    --green: #72a00e;
-    --light-green: #DBECD0;
+    --blue1: #1E3C95;
+    --green: #2594AF;
+    --light-green: #9CEFE7;
   }
 
 .category {
@@ -81,12 +81,12 @@ li {
 p.paragraph-title {
     font-weight: bold;
     font-family: "Open Sans", sans-serif;
-    color: var(--green);
+    color: var(--blue1);
 }
 
 
 li::marker {
-    color: var(--green);
+    color: var(--blue1);
 }
 
 .header-image-container {
@@ -202,6 +202,7 @@ li::marker {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     padding: 20px;
+    width: 100%;
 }
 
 .grid-bullets-item {
@@ -255,7 +256,7 @@ li::marker {
 }
 
 .inline-baloon {
-    background-color:#C8E1B2;
+    background-color:#E5E5E5;
     color: #112D6D;
     text-align:center;
     font-weight: bold;

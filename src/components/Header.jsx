@@ -15,7 +15,7 @@ const Header = ({ isShowLangSwitcher }) => {
       <div className="header-main-section">
         <Link className="logo" to="/" title="Assuta Ashdod">
           <Image
-            src={isHebrew ? 'assuta_logo.svg' : 'assuta_logo_en.png'}
+            src={isHebrew ? 'assuta_logo.png' : 'assuta_logo_en.png'}
             alt="Assuta Ashdod"
             width="300px"
           />
