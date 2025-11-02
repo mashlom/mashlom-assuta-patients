@@ -72,7 +72,7 @@ export default function Seo({ title, description, children, location, pageKeywor
         content={pageUrl}
       />
       <meta name="keywords" content={keywords} />
-      <meta name="robots" content="noindex">
+      <meta name="robots" content="noindex" />
       <title>{title}</title>
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={title} />
